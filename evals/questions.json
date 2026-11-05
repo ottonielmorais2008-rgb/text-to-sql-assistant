@@ -1,0 +1,16 @@
+[
+  { "q": "How many customers are there?", "ref": "SELECT COUNT(*) FROM customers" },
+  { "q": "How many products are in the Electronics category?", "ref": "SELECT COUNT(*) FROM products WHERE category='Electronics'" },
+  { "q": "How many orders were cancelled?", "ref": "SELECT COUNT(*) FROM orders WHERE status='cancelled'" },
+  { "q": "What is the most expensive product?", "ref": "SELECT name FROM products ORDER BY price DESC LIMIT 1" },
+  { "q": "Which country has the most customers?", "ref": "SELECT country FROM customers GROUP BY country ORDER BY COUNT(*) DESC LIMIT 1" },
+  { "q": "Which product sold the most units (all orders)?", "ref": "SELECT p.name FROM order_items oi JOIN products p ON p.id=oi.product_id GROUP BY p.id ORDER BY SUM(quantity) DESC LIMIT 1" },
+  { "q": "What is the total revenue from non-cancelled orders, rounded to 2 decimals?", "ref": "SELECT ROUND(SUM(oi.quantity*oi.unit_price),2) FROM order_items oi JOIN orders o ON o.id=oi.order_id WHERE o.status<>'cancelled'" },
+  { "q": "How many orders were placed in October 2026?", "ref": "SELECT COUNT(*) FROM orders WHERE order_date LIKE '2026-10-%'" },
+  { "q": "How many customers live in Lisbon?", "ref": "SELECT COUNT(*) FROM customers WHERE city='Lisbon'" },
+  { "q": "What is the average product price, rounded to 2 decimals?", "ref": "SELECT ROUND(AVG(price),2) FROM products" },
+  { "q": "Which customer (name) placed the most orders?", "ref": "SELECT c.name FROM orders o JOIN customers c ON c.id=o.customer_id GROUP BY c.id ORDER BY COUNT(*) DESC LIMIT 1" },
+  { "q": "How many orders are still pending?", "ref": "SELECT COUNT(*) FROM orders WHERE status='pending'" },
+  { "q": "Which category generated the most revenue from non-cancelled orders?", "ref": "SELECT p.category FROM order_items oi JOIN products p ON p.id=oi.product_id JOIN orders o ON o.id=oi.order_id WHERE o.status<>'cancelled' GROUP BY p.category ORDER BY SUM(oi.quantity*oi.unit_price) DESC LIMIT 1" },
+  { "q": "How many products have fewer than 50 units in stock?", "ref": "SELECT COUNT(*) FROM products WHERE stock<50" }
+]

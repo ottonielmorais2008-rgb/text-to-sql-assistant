@@ -1,0 +1,34 @@
+{
+  "name": "text-to-sql-assistant",
+  "version": "1.0.0",
+  "description": "Ask questions about a shop database in plain English; Gemini writes the SQL, the server validates it and runs it read-only.",
+  "private": true,
+  "license": "MIT",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "seed": "node scripts/seed.mjs",
+    "test": "tsx --test tests/*.test.ts",
+    "typecheck": "tsc --noEmit",
+    "eval": "tsx evals/run.mts"
+  },
+  "engines": { "node": ">=22.13" },
+  "dependencies": {
+    "@ai-sdk/google": "^4.0.109",
+    "ai": "^7.0.159",
+    "next": "^16.4.3",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1",
+    "zod": "^4.6.7"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4.3.3",
+    "@types/node": "^26.6.6",
+    "@types/react": "^19.3.0",
+    "postcss": "^8.5.32",
+    "tailwindcss": "^4.3.3",
+    "tsx": "^4.23.15",
+    "typescript": "^7.0.2"
+  }
+}
